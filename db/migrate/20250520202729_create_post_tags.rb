@@ -1,0 +1,13 @@
+class CreatePosts < ActiveRecord::Migration[8.0]
+  def change
+    create_table :post_tags do |t|
+      t.references :post, null: false, foreign_key: true
+      t.references :tag, null: false, foreign_key: true
+
+      t.timestamps
+    end
+    
+    # Ensure a post can't have the same tag multiple times
+    add_index :post_tags, [:post_id, :tag_id], unique: true
+  end
+end

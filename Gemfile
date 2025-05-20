@@ -1,5 +1,34 @@
 source "https://rubygems.org"
 
+ruby "3.4.4"
+
+# Use postgresql as the database for Active Record
+gem "pg", "~> 1.1"
+
+# Use Redis adapter to run Action Cable in production
+gem "redis", ">= 4.0.1"
+
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# gem "kredis"
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"
+
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
+gem "rack-cors"
+
+# JWT for token authentication
+gem "jwt"
+
+# Background processing with Sidekiq
+gem "sidekiq", "~> 7.0"
+
+# Scheduled tasks with Sidekiq
+gem "sidekiq-scheduler"
+
+# Active Model Serializers for JSON API serialization
+gem "active_model_serializers", "~> 0.10.13"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -49,15 +78,25 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # RSpec for testing
+  gem "rspec-rails", "~> 6.0.0"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem "spring"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "database_cleaner-active_record"
+  gem "shoulda-matchers", "~> 5.0"
 end
