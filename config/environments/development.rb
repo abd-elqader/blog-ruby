@@ -1,5 +1,8 @@
 require "active_support/core_ext/integer/time"
 
+# config/environments/development.rb
+Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 

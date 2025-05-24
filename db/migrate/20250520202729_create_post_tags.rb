@@ -1,4 +1,4 @@
-class CreatePosts < ActiveRecord::Migration[8.0]
+class CreatePostTags < ActiveRecord::Migration[8.0]
   def change
     create_table :post_tags do |t|
       t.references :post, null: false, foreign_key: true

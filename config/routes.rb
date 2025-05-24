@@ -16,3 +16,5 @@ Rails.application.routes.draw do
   
   # Health check for Docker
   get '/health', to: proc { [200, {}, ['ok']] }
+  
+end

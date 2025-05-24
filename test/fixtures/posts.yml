@@ -3,7 +3,4 @@
 one:
   title: MyString
   body: MyText
-
-two:
-  title: MyString
-  body: MyText
+  author: user_one  # This must reference a user in users.yml

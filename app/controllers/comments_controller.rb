@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     render json: @comments
   end
   
-  # GET /posts/:post_id/comments/:id
+  # GET /posts/:post_id/comments/:comment_id
   def show
     render json: @comment
   end
@@ -24,6 +24,8 @@ class CommentsController < ApplicationController
     else
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
+  rescue ActionController::ParameterMissing => e
+    render json: { error: e.message }, status: :bad_request
   end
   
   # PATCH/PUT /posts/:post_id/comments/:id
@@ -45,10 +47,14 @@ class CommentsController < ApplicationController
   
   def set_post
     @post = Post.find(params[:post_id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Post not found" }, status: :not_found
   end
   
   def set_comment
     @comment = @post.comments.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Comment not found" }, status: :not_found
   end
   
   def authorize_user

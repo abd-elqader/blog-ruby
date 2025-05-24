@@ -18,7 +18,6 @@ class Post < ApplicationRecord
   end
   
   def schedule_deletion
-    # Schedule post deletion after 24 hours
     PostDeletionJob.set(wait: 24.hours).perform_later(id)
   end
 end
