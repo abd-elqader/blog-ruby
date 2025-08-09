@@ -21,7 +21,7 @@ gem "rack-cors"
 gem "jwt"
 
 # Background processing with Sidekiq
-gem "sidekiq", "~> 7.0"
+gem "sidekiq", "~> 8.0"
 
 # Scheduled tasks with Sidekiq
 gem "sidekiq-scheduler"
